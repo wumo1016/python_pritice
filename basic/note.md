@@ -17,3 +17,9 @@
     - 安装依赖: `uv add [依赖名]`
 
 - pyenv
+
+## 基础操作
+
+- 进行命令行 `python3`
+- 退出命令行 `exit()`
+- 执行 python 文件 `python3 [文件名]`
