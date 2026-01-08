@@ -3,8 +3,9 @@
 - uv
 
   - [安装](https://github.com/astral-sh/uv)
+    - mac 安装
+      - `brew install uv`
   - 常用命令
-    - 安装全局版本: `uv python install --global`
     - 安装最新稳定版本: `uv python install`
     - 安装指定版本: `uv python install 3.12`
     - 查看已通过 uv 安装的所有 Python 版本: `uv python list`
