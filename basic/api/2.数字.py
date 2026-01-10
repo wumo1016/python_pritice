@@ -1,6 +1,7 @@
 """数字
 - 保留小数位
   - 格式: {变量:.保留小数位f} => f(float)
+  - round(number, ndigits): 四舍五入
 - 相关方法
   - int(x): 将x转换为整数
   - float(x): 将x转换为浮点数
