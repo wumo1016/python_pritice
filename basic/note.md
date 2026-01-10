@@ -11,6 +11,7 @@
     - 查看已通过 uv 安装的所有 Python 版本: `uv python list`
     - 卸载指定版本的 Python: `uv python uninstall 3.12`
     - 初始化项目: `uv init [项目名]`
+      - 已有项目: 进入项目目录, 执行 `uv init`
     - 新建虚拟环境: `uv venv`
     - 进入虚拟环境
       - win: `.\.venv\Scripts\Activate.ps1`
