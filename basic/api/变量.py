@@ -3,16 +3,19 @@
   - 变量是指在程序运行过程中可以改变其值的量。
 """
 
-
 """ ------------------------ 基础 ------------------------ """
+
+
 def f1():
     s1 = 123
-    print(s1)
+    print(s1)  # 123
     s1 = "hello world"
-    print(s1)
+    print(s1)  # hello world
+
+    print(s1 is not None)  # True
 
 
-# f1()
+f1()
 
 
 # 一次性定义多个变量
@@ -25,6 +28,8 @@ def f2():
 # f2()
 
 """ ------------------------ 查看变量类型 type isinstance ------------------------ """
+
+
 def f3():
     s0 = 123
     print(type(s0))  # <class 'int'>
@@ -45,4 +50,5 @@ def f3():
     s4 = None
     print(type(s4))  # <class 'NoneType'>
 
-f3()
+
+# f3()
