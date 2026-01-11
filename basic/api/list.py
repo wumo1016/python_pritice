@@ -24,63 +24,95 @@
   - remove(元素): 删除第一个匹配的元素。
   - insert(index, 元素): 在指定索引位置插入元素。
   - pop(index): 删除并返回指定索引位置的元素(如果不指定索引, 默认删除最后一个元素)。
-  - sort(): 对列表进行排序(默认升序)。
+  - sort(key = 函数, reverse = True): 对列表进行排序(默认升序)。
   - reverse(): 反转列表元素的顺序。
   - index(元素): 返回第一个匹配元素的索引(如果不存在, 会直接报错)。
   - count(元素): 返回元素在列表中出现的次数。
 """
 
 """ ------------------------ 类型 ------------------------ """
+
+
 def f1():
-  list = [1, 2, 3, 4, 5]
-  print('类型', type(list)) # <class 'list'>
+    list = [1, 2, 3, 4, 5]
+    print("类型", type(list))  # <class 'list'>
+
+
 # f1()
 
 """ ------------------------ 切片 ------------------------ """
+
+
 def f2():
-  list = [1, 2, 3, 4, 5]
-  print(list[:3:]) # [1, 2, 3]
-  print(list[:3]) # [1, 2, 3]
+    list = [1, 2, 3, 4, 5]
+    print(list[:3:])  # [1, 2, 3]
+    print(list[:3])  # [1, 2, 3]
 
-  print(list[::1]) # [1, 2, 3, 4, 5]
-  print(list[:-1:1]) # [1, 2, 3, 4]
+    print(list[::1])  # [1, 2, 3, 4, 5]
+    print(list[:-1:1])  # [1, 2, 3, 4]
 
-  print(list[::-1]) # [5, 4, 3, 2, 1]
-  print(list[-2:-5:-1]) # [4, 3, 2]
-  print(list[3:0:-1]) # [5, 4, 3]
+    print(list[::-1])  # [5, 4, 3, 2, 1]
+    print(list[-2:-5:-1])  # [4, 3, 2]
+    print(list[3:0:-1])  # [5, 4, 3]
 
-f2()
+
+# f2()
 
 """ ------------------------ in ------------------------ """
+
+
 def f3():
-  list = [1, 2, 3, 4, 5]
-  print(2 in list) # True
-  print(5 not in list) # False
-  print(6 in list) # False
+    list = [1, 2, 3, 4, 5]
+    print(2 in list)  # True
+    print(5 not in list)  # False
+    print(6 in list)  # False
+
+
 # f3()
 
 """ ------------------------ 解包 ------------------------ """
+
+
 def f4():
-  list1 = [1, 2, 3, 4, 5]
-  list2 = [6, 7, 8, 9, 10]
-  print([*list1, *list2]) # 1 2 3 4 5 6 7 8 9 10
+    list1 = [1, 2, 3, 4, 5]
+    list2 = [6, 7, 8, 9, 10]
+    print([*list1, *list2])  # 1 2 3 4 5 6 7 8 9 10
+
+
 # f4()
 
 """ ------------------------ 合并列表 ------------------------ """
+
+
 def f5():
-  list1 = [1, 2, 3, 4, 5]
-  list2 = [6, 7, 8, 9, 10]
-  print(list1 + list2) # 1 2 3 4 5 6 7 8 9 10
+    list1 = [1, 2, 3, 4, 5]
+    list2 = [6, 7, 8, 9, 10]
+    print(list1 + list2)  # 1 2 3 4 5 6 7 8 9 10
+
+
 # f5()
 
 """ ------------------------ 列表推导式 ------------------------ """
+
+
 def f6():
-  list = [1, 2, 3, 4, 5]
-  print([x * 2 for x in list]) # [2, 4, 6, 8, 10]
+    list = [1, 2, 3, 4, 5]
+    print([x * 2 for x in list])  # [2, 4, 6, 8, 10]
 
-  print([x * 2 for x in range(1, 6)]) # [2, 4, 6, 8, 10]
+    print([x * 2 for x in range(1, 6)])  # [2, 4, 6, 8, 10]
 
-  print([x * 2 for x in list if x % 2 == 0]) # [4, 8] 
+    print([x * 2 for x in list if x % 2 == 0])  # [4, 8]
+
 
 # f6()
 
+""" ------------------------ sort ------------------------ """
+
+
+def f7():
+    list = ["a2", "c123", "54", "sfkush", "asdd", "b"]
+    list.sort(key=lambda x: len(x))
+    print(list)  # ['b', 'a2', '54', 'asdd', 'c123', 'sfkush']
+
+
+f7()
