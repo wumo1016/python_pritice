@@ -34,22 +34,32 @@
     - 被导入时: __name__ == '模块名'
   - __all__: 模块的公开接口(只影响 from 模块名 import *)
     - 例如: __all__ = ['sum']
-    - 调用: from test1 import * 导入的只有 sum 函数
+    - 调用: from my_fun import * 导入的只有 sum 函数
  """
 
 """ ------------------------ 导入1 ------------------------ """
-# import test1
+# import my_fun
 
-# print(test1.sum(1, 2))  # 3
+# print(my_fun.sum(1, 2))  # 3
 
 """ ------------------------ 导入2 ------------------------ """
-# from test1 import mul, div
+# from my_fun import mul, div
 
 # print(mul(2, 3))  # 6
 # print(div(6, 3))  # 2.0
 
 """ ------------------------ 导入3 ------------------------ """
-from test1 import *
+# from my_fun import *
 
-print(sum(2, 3))  # 5
-print(sub(6, 3))  # 3
+# print(sum(2, 3))  # 5
+# print(sub(6, 3))  # 3
+
+
+""" ------------------------ 导入4 ------------------------ """
+""" 
+绝对路径导入
+3.3+ 顶层目录必须有 __init__.py 文件
+"""
+from basic.包.utils.my_fun import sum
+
+print(sum(1, 2))  # 3
