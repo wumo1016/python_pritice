@@ -27,6 +27,11 @@
     - __gt__: 大于方法(greater than)(在使用 > 运算符时自动调用)
     - __ge__: 大于等于方法(greater than or equal)(在使用 >= 运算符时自动调用)
     - __del__: 删除方法(在删除实例对象时自动调用)
+- 继承
+    - 定义: 子类可以继承父类的属性和方法, 从而实现代码的复用
+    - 分类
+        - 单继承: 子类只能继承一个父类
+        - 多继承: 子类可以继承多个父类
 """
 
 """ ------------------------ 基础 ------------------------ """
@@ -114,7 +119,7 @@ def f4():
     print(my_obj1 > my_obj2)  # False
     print(my_obj1 >= my_obj2)  # False
 
-f4()
+# f4()
 
 """ ------------------------ 类属性 ------------------------ """
 def f5():
@@ -134,3 +139,17 @@ def f5():
     MyClass.count += 1
     print(MyClass.count)  # 1
 # f5()
+
+""" ------------------------ 类继承 ------------------------ """
+def f6():
+    class Parent:
+        def __init__(self, name):
+            self.name = name
+    # 单继承
+    class Child1(Parent):
+        def __init__(self, name):
+            super().__init__(name)
+
+    child1_1 = Child1("张三")
+    print(child1_1.name)  # 张三
+f6()
