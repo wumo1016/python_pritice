@@ -7,6 +7,7 @@
   - 修改: 类名.属性名 = 值(通过 实例.属性名 无法修改)
 - 实例属性
   - 定义: 在类中定义的变量, 每个实例对象都有自己的属性值
+    - 可以在类中定义, 也可以在实例化类时动态添加(通过 实例.属性名 = 值 来添加)
   - 调用: 实例对象.属性名(优先查找实例属性, 没有则查找类属性)
   - 例如
     - __dict__: 实例属性的字典(以字典的形式存储所有实例属性)
@@ -25,6 +26,7 @@
     - __le__: 小于等于方法(less than or equal)(在使用 <= 运算符时自动调用)
     - __gt__: 大于方法(greater than)(在使用 > 运算符时自动调用)
     - __ge__: 大于等于方法(greater than or equal)(在使用 >= 运算符时自动调用)
+    - __del__: 删除方法(在删除实例对象时自动调用)
 """
 
 """ ------------------------ 基础 ------------------------ """
@@ -94,6 +96,9 @@ def f4():
         
         def __ge__(self, other):
             return self.price >= other.price
+
+        def __del__(self):
+            print(f"{self.name}被删除了")
     
     my_obj1 = MyClass("张三", 100)
     my_obj2 = MyClass("李四", 200)
@@ -109,7 +114,7 @@ def f4():
     print(my_obj1 > my_obj2)  # False
     print(my_obj1 >= my_obj2)  # False
 
-# f4()
+f4()
 
 """ ------------------------ 类属性 ------------------------ """
 def f5():
@@ -128,4 +133,4 @@ def f5():
     print(MyClass.count)  # 0
     MyClass.count += 1
     print(MyClass.count)  # 1
-f5()
+# f5()
