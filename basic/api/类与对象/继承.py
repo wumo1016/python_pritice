@@ -16,6 +16,14 @@
             - 方法名必须与父类的方法名相同
             - 参数列表必须与父类的方法参数列表相同(如果有默认值, 则可以不同)
             - 可以在子类中添加新的参数
+- 多态
+    - 含义
+        - 同一个事物在不同场景下表现出不同的形态
+        - python 中的多态是指, 同一个函数, 传入不同的对象, 可以表现出不同的行为
+    - 三个条件
+        - 继承关系: 子类必须继承自父类
+        - 方法重写: 子类必须重写父类的方法
+        - 父类引用: 父类引用指向子类对象
 """
 
 """ ------------------------ 单继承 ------------------------ """
@@ -72,7 +80,7 @@ def f2():
     print(Child2.__mro__)  # (<class '__main__.Child2'>, <class '__main__.Parent'>, <class '__main__.School'>, <class 'object'>)
     print(Child2.mro())  # [<class '__main__.Child2'>, <class '__main__.Parent'>, <class '__main__.School'>, <class 'object'>]
 
-f2()
+# f2()
 
 """ ------------------------ 单继承-重写父类方法 ------------------------ """
 def f3():
@@ -154,3 +162,37 @@ def f5():
     # print(child1_1.__age)  # AttributeError: 'Child1' object has no attribute '__age'
     child1_1.say_hello()  # AttributeError: 'Child1' object has no attribute '__say_hello'
 # f5()
+
+""" ------------------------ 多态 ------------------------ """
+def f6():
+    class Animal:
+        def __init__(self, name):
+            self.name = name
+
+        def say_hello(self):
+            print("你好, 我是 Animal")
+
+    class Dog(Animal):
+        def __init__(self, name):
+            super().__init__(name)
+
+        def say_hello(self):
+            super().say_hello()
+            print("你好, 我是 Dog", self.name)
+    class Cat(Animal):
+        def __init__(self, name):
+            super().__init__(name)
+
+        def say_hello(self):
+            super().say_hello()
+            print("你好, 我是 Cat", self.name)
+
+    def say_hello_polymorphic(obj: Animal):
+        obj.say_hello()
+
+    dog1_1 = Dog("狗1")
+    cat1_1 = Cat("猫1")
+
+    say_hello_polymorphic(dog1_1)  # 你好, 我是 Animal 狗1 你好, 我是 Dog 狗1
+    say_hello_polymorphic(cat1_1)  # 你好, 我是 Animal 猫1 你好, 我是 Cat 猫1
+f6()
