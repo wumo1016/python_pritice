@@ -10,6 +10,12 @@
     - 调用父类方法
       - 父类.方法名(self, 参数) - 常用于多继承, 调用父类的方法
       - super().方法名(参数) - 常用于单继承(如果是多继承, 则调用第一个父类的方法)
+    - 重写父类方法
+        - 定义: 在子类中重新定义父类的方法, 从而实现对父类方法的重写
+        - 特点
+            - 方法名必须与父类的方法名相同
+            - 参数列表必须与父类的方法参数列表相同(如果有默认值, 则可以不同)
+            - 可以在子类中添加新的参数
 """
 
 """ ------------------------ 单继承 ------------------------ """
@@ -38,21 +44,35 @@ def f2():
         def say_hello(self):
             print("你好, 我是 Parent", self.name)
 
+        def get_money(self, money):
+            print("我从 Parent 类中获取了", money)
+
     class School:
         def __init__(self, name):
             self.name = name
 
         def say_hello(self):
             print("你好, 我是 School", self.name)
+
     class Child2(Parent, School):
         def __init__(self, name):
             super().__init__(name)
+        # 非重写
+        # def get_money(self):
+        #     pass
+
+        # 重写父类方法
+        def get_money(self, money):
+            super().get_money(money)
+            print("我从 Child2 类中获取了", money)
 
     child2_1 = Child2("李四")
     child2_1.say_hello()  # 你好, 我是 Parent 李四
+    child2_1.get_money(100)  # 我从 Parent 类中获取了 100 元 我从 Child2 类中获取了 100 元
     print(Child2.__mro__)  # (<class '__main__.Child2'>, <class '__main__.Parent'>, <class '__main__.School'>, <class 'object'>)
     print(Child2.mro())  # [<class '__main__.Child2'>, <class '__main__.Parent'>, <class '__main__.School'>, <class 'object'>]
-# f2()
+
+f2()
 
 """ ------------------------ 单继承-重写父类方法 ------------------------ """
 def f3():
@@ -110,4 +130,27 @@ def f4():
 
     child2_1 = Child2("李四")
     child2_1.say_hello() 
-f4()
+# f4()
+
+""" ------------------------ 单继承-私有属性和方法 ------------------------ """
+def f5():
+    class Parent:
+        def __init__(self, name):
+            self.name = name
+            self.__age = 18
+
+        def __say_hello(self):
+            print("你好, 我是 Parent", self.name)
+
+    class Child1(Parent):
+        def __init__(self, name):
+            super().__init__(name)
+
+        def say_hello(self):
+            super().__say_hello()
+
+    child1_1 = Child1("张三")
+    print(child1_1.name)  # 张三
+    # print(child1_1.__age)  # AttributeError: 'Child1' object has no attribute '__age'
+    child1_1.say_hello()  # AttributeError: 'Child1' object has no attribute '__say_hello'
+# f5()
