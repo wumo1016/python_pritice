@@ -27,6 +27,8 @@
 """
 
 """ ------------------------ 单继承 ------------------------ """
+
+
 def f1():
     class Parent:
         def __init__(self, name):
@@ -41,9 +43,13 @@ def f1():
 
     child1_1 = Child1("张三")
     print(child1_1.name)  # 张三
+
+
 # f1()
 
 """ ------------------------ 多继承 ------------------------ """
+
+
 def f2():
     class Parent:
         def __init__(self, name):
@@ -65,6 +71,7 @@ def f2():
     class Child2(Parent, School):
         def __init__(self, name):
             super().__init__(name)
+
         # 非重写
         # def get_money(self):
         #     pass
@@ -76,13 +83,22 @@ def f2():
 
     child2_1 = Child2("李四")
     child2_1.say_hello()  # 你好, 我是 Parent 李四
-    child2_1.get_money(100)  # 我从 Parent 类中获取了 100 元 我从 Child2 类中获取了 100 元
-    print(Child2.__mro__)  # (<class '__main__.Child2'>, <class '__main__.Parent'>, <class '__main__.School'>, <class 'object'>)
-    print(Child2.mro())  # [<class '__main__.Child2'>, <class '__main__.Parent'>, <class '__main__.School'>, <class 'object'>]
+    child2_1.get_money(
+        100
+    )  # 我从 Parent 类中获取了 100 元 我从 Child2 类中获取了 100 元
+    print(
+        Child2.__mro__
+    )  # (<class '__main__.Child2'>, <class '__main__.Parent'>, <class '__main__.School'>, <class 'object'>)
+    print(
+        Child2.mro()
+    )  # [<class '__main__.Child2'>, <class '__main__.Parent'>, <class '__main__.School'>, <class 'object'>]
+
 
 # f2()
 
 """ ------------------------ 单继承-重写父类方法 ------------------------ """
+
+
 def f3():
     class Parent:
         def __init__(self, name):
@@ -105,9 +121,13 @@ def f3():
 
     child1_1 = Child1("张三")
     child1_1.say_hello("你好")  # 你好, 我是 Parent 张三 你好
+
+
 # f3()
 
 """ ------------------------ 多继承-重写父类方法 ------------------------ """
+
+
 def f4():
     class Parent:
         def __init__(self, name):
@@ -137,10 +157,14 @@ def f4():
             print("你好, 我是 Child2", self.name)  # 你好, 我是 Child2 李四
 
     child2_1 = Child2("李四")
-    child2_1.say_hello() 
+    child2_1.say_hello()
+
+
 # f4()
 
 """ ------------------------ 单继承-私有属性和方法 ------------------------ """
+
+
 def f5():
     class Parent:
         def __init__(self, name):
@@ -161,9 +185,13 @@ def f5():
     print(child1_1.name)  # 张三
     # print(child1_1.__age)  # AttributeError: 'Child1' object has no attribute '__age'
     child1_1.say_hello()  # AttributeError: 'Child1' object has no attribute '__say_hello'
+
+
 # f5()
 
 """ ------------------------ 多态 ------------------------ """
+
+
 def f6():
     class Animal:
         def __init__(self, name):
@@ -179,6 +207,7 @@ def f6():
         def say_hello(self):
             super().say_hello()
             print("你好, 我是 Dog", self.name)
+
     class Cat(Animal):
         def __init__(self, name):
             super().__init__(name)
@@ -195,4 +224,44 @@ def f6():
 
     say_hello_polymorphic(dog1_1)  # 你好, 我是 Animal 狗1 你好, 我是 Dog 狗1
     say_hello_polymorphic(cat1_1)  # 你好, 我是 Animal 猫1 你好, 我是 Cat 猫1
-f6()
+
+
+# f6()
+
+""" ------------------------ 伪多态 ------------------------ """
+
+
+def f7():
+    class Animal:
+        def __init__(self, name):
+            self.name = name
+
+        def say_hello(self):
+            print("你好, 我是 Animal")
+
+    class Dog(Animal):
+        def __init__(self, name):
+            super().__init__(name)
+
+        def say_hello(self):
+            super().say_hello()
+            print("你好, 我是 Dog", self.name)
+
+    class Phone:
+        def __init__(self, name):
+            self.name = name
+
+        def say_hello(self):
+            print("你好, 我是 Phone", self.name)
+
+    def say_hello_polymorphic(obj: Animal):
+        obj.say_hello()
+
+    dog1_1 = Dog("狗1")
+    phone1_1 = Phone("手机1")
+
+    say_hello_polymorphic(dog1_1)  # 你好, 我是 Animal 狗1 你好, 我是 Dog 狗1
+    say_hello_polymorphic(phone1_1)  # 你好, 我是 Phone 手机1
+
+
+f7()
