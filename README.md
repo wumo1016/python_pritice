@@ -3,7 +3,6 @@
 ## 版本管理工具
 
 - uv
-
   - [安装](https://github.com/astral-sh/uv)
     - mac 安装
       - `brew install uv`
@@ -28,3 +27,27 @@
 - 进行命令行 `python3`
 - 退出命令行 `exit()`
 - 执行 python 文件 `python3 [文件名]`
+
+## pyenv 版本管理工具(mac)
+
+```sh
+# 安装Pyenv（如果尚未安装）
+brew install pyenv
+
+# 在shell配置文件中初始化Pyenv（如~/.zshrc或~/.bash_profile）
+echo 'eval "$(pyenv init -)"' >> ~/.zshrc
+source ~/.zshrc
+
+# 在shell配置文件中初始化Pyenv（如~/.zshrc或~/.bash_profile）
+pyenv install 3.9.18
+
+
+# 全局或局部设置Python版本为3.9.18
+pyenv global 3.9.18
+
+# 或者在项目目录下设置
+pyenv local 3.9.18
+
+# 确保node-gyp使用这个Python版本
+npm config set python /Users/wumo/.pyenv/versions/3.9.18/bin/python
+```
