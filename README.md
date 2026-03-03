@@ -40,7 +40,6 @@ source ~/.zshrc
 # 在shell配置文件中初始化Pyenv（如~/.zshrc或~/.bash_profile）
 pyenv install 3.9.18
 
-
 # 全局或局部设置Python版本为3.9.18
 pyenv global 3.9.18
 
